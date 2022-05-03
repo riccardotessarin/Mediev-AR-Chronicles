@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour {
 
+	private float health;
+
 	// Use this for initialization
 	void Start () {
-		
+		health = 100f;
 	}
 	
 	public void TakeDamage(float damage) {
-		//TODO: Remove health
+		health -= damage;
 	}
 	
 	// Update is called once per frame

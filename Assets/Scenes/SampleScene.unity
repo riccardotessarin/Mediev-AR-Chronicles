@@ -390,7 +390,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4911466748557628, guid: c93f39a3231dc2943b35afbfb2305f80, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 4911466748557628, guid: c93f39a3231dc2943b35afbfb2305f80, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1111,27 +1111,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 64809540013408098, guid: 8e678e31997f7be4dbe1db19a1d6fff9,
-        type: 2}
-      propertyPath: m_Convex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1781949147348344, guid: 8e678e31997f7be4dbe1db19a1d6fff9, type: 2}
-      propertyPath: m_TagString
-      value: Sword
-      objectReference: {fileID: 0}
-    - target: {fileID: 4307664602185492, guid: 8e678e31997f7be4dbe1db19a1d6fff9, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 48.14457
-      objectReference: {fileID: 0}
-    - target: {fileID: 4307664602185492, guid: 8e678e31997f7be4dbe1db19a1d6fff9, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 48.14457
-      objectReference: {fileID: 0}
-    - target: {fileID: 4307664602185492, guid: 8e678e31997f7be4dbe1db19a1d6fff9, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 48.14457
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e678e31997f7be4dbe1db19a1d6fff9, type: 2}
   m_IsPrefabAsset: 0
@@ -1439,3 +1418,44 @@ Material:
     m_Floats: []
     m_Colors:
     - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
+--- !u!1 &2132780125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2132780127}
+  - component: {fileID: 2132780126}
+  m_Layer: 0
+  m_Name: EnemySwordSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2132780126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2132780125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47517ec85d76b334f8359e107c62074a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySword: {fileID: 1944282642363980, guid: 44c677417d3b9794dbc2ee328aed4d79, type: 2}
+--- !u!4 &2132780127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2132780125}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
