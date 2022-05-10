@@ -46,6 +46,6 @@ public class EnemySwordBehaviour : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		transform.Translate(Vector3.up * (Time.unscaledDeltaTime * ThrowSpeed), Space.Self);
+		transform.Translate(Vector3.up * (Time.deltaTime * ThrowSpeed), Space.Self);
 	}
 }
