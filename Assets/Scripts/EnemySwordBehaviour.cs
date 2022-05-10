@@ -14,7 +14,7 @@ public class EnemySwordBehaviour : MonoBehaviour {
 	// This function destroys the sword after a certain time if it doesn't hit anything
 	private IEnumerator WaitAndDestroy(float waitTime) {
 		while (true) {
-			yield return new WaitForSecondsRealtime(waitTime);
+			yield return new WaitForSeconds(waitTime);
 			Destroy(transform.parent.gameObject);
 		}
 	}
