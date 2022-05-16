@@ -8,7 +8,7 @@ public class EnemySwordBehaviour : MonoBehaviour {
 	private const float ThrowSpeed = 1f;
 
 	private void Awake() {
-		StartCoroutine(WaitAndDestroy(30.0f));
+		StartCoroutine(WaitAndDestroy(10.0f));
 	}
 	
 	// This function destroys the sword after a certain time if it doesn't hit anything

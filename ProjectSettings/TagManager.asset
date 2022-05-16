@@ -8,6 +8,7 @@ TagManager:
   - Sword
   - Medallion
   - EnemySword
+  - Enemy
   layers:
   - Default
   - TransparentFX

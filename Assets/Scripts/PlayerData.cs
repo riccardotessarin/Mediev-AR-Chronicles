@@ -8,7 +8,7 @@ public class PlayerData : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		health = 100f;
+		health = 100.0f;
 	}
 	
 	public void TakeDamage(float damage) {
