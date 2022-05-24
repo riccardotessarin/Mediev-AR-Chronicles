@@ -7,6 +7,8 @@ public class PauseManager : MonoBehaviour {
 	public static bool GameIsPaused = false;
 	public GameObject pauseMenuUI;
 	public GameObject gameMenuUI;
+	public GameObject winUI;
+	public GameObject loseUI;
 	
 	// Use this for initialization
 	void Start () {
@@ -35,6 +37,18 @@ public class PauseManager : MonoBehaviour {
 			GameIsPaused = false;
 			AudioListener.pause = false;
 		}
+	}
+
+	public void Victory() {
+		gameMenuUI.SetActive(false);
+		winUI.SetActive(true);
+		Time.timeScale = 0f;
+	}
+	
+	public void Defeat() {
+		gameMenuUI.SetActive(false);
+		loseUI.SetActive(true);
+		Time.timeScale = 0f;
 	}
 
 	public void QuitGame() {

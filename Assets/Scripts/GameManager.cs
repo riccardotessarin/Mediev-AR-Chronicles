@@ -11,13 +11,15 @@ public class GameManager : MonoBehaviour {
 
 	public GameState state;
 	bool gameHasEnded = false;
+
+	public PauseManager pauseManager;
 	
-	public const float TimeEnemyTurn = 10.0f;
-	public const float TimePlayerTurn = 10.0f;
+	public const float TimeEnemyTurn = 20.0f;
+	public const float TimePlayerTurn = 20.0f;
 	public const float TimeBeforeSpawn = 2.0f;
 	public const float TimeBetweenSpawns = 5.0f;
 
-	public const float MaxTurnDamage = 20.0f;
+	public const float MaxTurnDamage = 50.0f;
 
 	public static event Action<GameState> GameStateChanged; 
 
@@ -53,8 +55,7 @@ public class GameManager : MonoBehaviour {
 	private void HandleGameWin() {
 		if ( gameHasEnded == false ) {
 			gameHasEnded = true;
-			//TODO: Show "You win screen"
-			
+			pauseManager.Victory();
 		}
 	}
 
@@ -62,8 +63,7 @@ public class GameManager : MonoBehaviour {
 		
 		if ( gameHasEnded == false ) {
 			gameHasEnded = true;
-			//TODO: Show "You lose screen"
-			
+			pauseManager.Defeat();
 		}
 	}
 

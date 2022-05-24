@@ -6,14 +6,18 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour {
 
 	private bool _isTakingDamage = false;
-	
+
+	private float maxHealth = 100.0f;
 	private float enemyHealth;
 	private float damageReceived = 0.0f;
 	
+	public HealthBar healthBar;
+
 	private float _maxTurnDamage;
 
 	private void Awake() {
-		enemyHealth = 100.0f;
+		enemyHealth = maxHealth;
+		healthBar.SetMaxHealth(maxHealth);
 		_maxTurnDamage = GameManager.MaxTurnDamage;
 		gameObject.SetActive(false);
 		//gameObject.GetComponent<MeshRenderer>().enabled = false;
@@ -30,7 +34,7 @@ public class EnemyBehaviour : MonoBehaviour {
 		if ( go.CompareTag("Sword") ) {
 			if ( !_isTakingDamage ) {
 				_isTakingDamage = true;
-				//SwordSpawnManager.Instance.EnemyTakeDamage(5.0f);
+				EnemyTakeDamage(10.0f);
 				gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
 			}
 		}
@@ -49,6 +53,8 @@ public class EnemyBehaviour : MonoBehaviour {
 	public void EnemyTakeDamage(float damage) {
 		enemyHealth -= damage;
 		damageReceived += damage;
+		
+		healthBar.SetHealth(enemyHealth);
 
 		//If enemy health has gone to 0 it's player win
 		if ( enemyHealth <= 0.0f ) {
