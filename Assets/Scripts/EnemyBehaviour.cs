@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour {
 
+	private Animator _animator;
+	
 	private bool _isTakingDamage = false;
 
 	private float maxHealth = 100.0f;
@@ -19,7 +21,8 @@ public class EnemyBehaviour : MonoBehaviour {
 		enemyHealth = maxHealth;
 		healthBar.SetMaxHealth(maxHealth);
 		_maxTurnDamage = GameManager.MaxTurnDamage;
-		gameObject.SetActive(false);
+		//gameObject.SetActive(false);
+		_animator = GetComponent<Animator>();
 		//gameObject.GetComponent<MeshRenderer>().enabled = false;
 	}
 
@@ -34,6 +37,7 @@ public class EnemyBehaviour : MonoBehaviour {
 		if ( go.CompareTag("Sword") ) {
 			if ( !_isTakingDamage ) {
 				_isTakingDamage = true;
+				_animator.SetTrigger("Damaged");
 				EnemyTakeDamage(10.0f);
 				gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
 			}
@@ -47,7 +51,14 @@ public class EnemyBehaviour : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		/*
+		 if ( Input.GetKeyDown(KeyCode.D) ) {
+
+		}
 		
+		if ( Input.GetKeyDown(KeyCode.F) ) {
+		}
+		*/
 	}
 	
 	public void EnemyTakeDamage(float damage) {
@@ -76,8 +87,9 @@ public class EnemyBehaviour : MonoBehaviour {
 	}
 
 	private void Defeated() {
+		_animator.SetTrigger("Dead");
 		GameManager.Instance.UpdateGameState(GameState.Victory);
-		Destroy(gameObject);
+		//Destroy(gameObject);
 	}
 
 }

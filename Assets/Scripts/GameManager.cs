@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour {
 
 	public PauseManager pauseManager;
 	
-	public const float TimeEnemyTurn = 20.0f;
-	public const float TimePlayerTurn = 20.0f;
+	public const float TimeEnemyTurn = 2.0f;
+	public const float TimePlayerTurn = 2000.0f;
 	public const float TimeBeforeSpawn = 2.0f;
 	public const float TimeBetweenSpawns = 5.0f;
 
