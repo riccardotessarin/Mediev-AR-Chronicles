@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="sword_top" size="0.100000 0.100000" />
+    <ImageTarget name="sword_side" size="0.100000 0.100000" />
+    <ImageTarget name="sword_front" size="0.100000 0.100000" />
+    <ImageTarget name="sword_bottom" size="0.100000 0.100000" />
+    <ImageTarget name="shield_top" size="0.100000 0.100000" />
+    <ImageTarget name="shield_side" size="0.100000 0.100000" />
+    <ImageTarget name="shield_front" size="0.100000 0.100000" />
+    <ImageTarget name="shield_bottom" size="0.100000 0.100000" />
+    <ImageTarget name="medallion" size="0.100000 0.100000" />
+  </Tracking>
+</QCARConfig>

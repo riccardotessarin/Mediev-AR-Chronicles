@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+    <Tracking>
+        <ImageTarget name="medallion" size="0.100000 0.100000"/>
+        <ImageTarget name="sword.Right" size="0.100000 0.100000"/>
+        <ImageTarget name="sword.Bottom" size="0.100000 0.100000"/>
+        <ImageTarget name="sword.Left" size="0.100000 0.100000"/>
+        <ImageTarget name="sword.Front" size="0.100000 0.100000"/>
+        <ImageTarget name="sword.Top" size="0.100000 0.100000"/>
+        <ImageTarget name="sword.Back" size="0.100000 0.100000"/>
+        <ImageTarget name="shield.Right" size="0.100000 0.100000"/>
+        <ImageTarget name="shield.Bottom" size="0.100000 0.100000"/>
+        <ImageTarget name="shield.Left" size="0.100000 0.100000"/>
+        <ImageTarget name="shield.Front" size="0.100000 0.100000"/>
+        <ImageTarget name="shield.Top" size="0.100000 0.100000"/>
+        <ImageTarget name="shield.Back" size="0.100000 0.100000"/>
+        <MultiTarget name="sword">
+            <Part name="sword.Left" translation="-0.05000000074505806 0 0" rotation="AD: 0 1 0 -90"/>
+            <Part name="sword.Right" translation="0.05000000074505806 0 0" rotation="AD: 0 1 0 90"/>
+            <Part name="sword.Front" translation="0 0 0.05000000074505806" rotation="AD: 1 0 0 0"/>
+            <Part name="sword.Back" translation="0 0 -0.05000000074505806" rotation="AD: 0 1 0 180"/>
+            <Part name="sword.Top" translation="0 0.05000000074505806 0" rotation="AD: 1 0 0 -90"/>
+            <Part name="sword.Bottom" translation="0 -0.05000000074505806 0" rotation="AD: 1 0 0 90"/>
+        </MultiTarget>
+        <MultiTarget name="shield">
+            <Part name="shield.Left" translation="-0.05000000074505806 0 0" rotation="AD: 0 1 0 -90"/>
+            <Part name="shield.Right" translation="0.05000000074505806 0 0" rotation="AD: 0 1 0 90"/>
+            <Part name="shield.Front" translation="0 0 0.05000000074505806" rotation="AD: 1 0 0 0"/>
+            <Part name="shield.Back" translation="0 0 -0.05000000074505806" rotation="AD: 0 1 0 180"/>
+            <Part name="shield.Top" translation="0 0.05000000074505806 0" rotation="AD: 1 0 0 -90"/>
+            <Part name="shield.Bottom" translation="0 -0.05000000074505806 0" rotation="AD: 1 0 0 90"/>
+        </MultiTarget>
+    </Tracking>
+</QCARConfig>
