@@ -42,13 +42,11 @@ public class PauseManager : MonoBehaviour {
 	public void Victory() {
 		gameMenuUI.SetActive(false);
 		winUI.SetActive(true);
-		Time.timeScale = 0f;
 	}
 	
 	public void Defeat() {
 		gameMenuUI.SetActive(false);
 		loseUI.SetActive(true);
-		Time.timeScale = 0f;
 	}
 
 	public void QuitGame() {

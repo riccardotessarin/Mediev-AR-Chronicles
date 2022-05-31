@@ -14,12 +14,12 @@ public class GameManager : MonoBehaviour {
 
 	public PauseManager pauseManager;
 	
-	public const float TimeEnemyTurn = 2.0f;
-	public const float TimePlayerTurn = 2000.0f;
+	public const float TimeEnemyTurn = 30.0f;
+	public const float TimePlayerTurn = 30.0f;
 	public const float TimeBeforeSpawn = 2.0f;
 	public const float TimeBetweenSpawns = 5.0f;
 
-	public const float MaxTurnDamage = 50.0f;
+	public const float MaxTurnDamage = 20.0f;
 
 	public static event Action<GameState> GameStateChanged; 
 

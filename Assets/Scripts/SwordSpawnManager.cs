@@ -74,7 +74,7 @@ public class SwordSpawnManager : MonoBehaviour {
 	void Start () {
 		_medallion = GameObject.FindWithTag("Medallion");
 		_medallionPosition = _medallion.transform.position;
-		enemyPrefab = Instantiate(enemyPrefab, new Vector3(0, 0, 0.5f), transform.rotation);
+		enemyPrefab = Instantiate(enemyPrefab, new Vector3(0, 0, 0.5f), enemyPrefab.transform.rotation);
 	}
 	
 	// Update is called once per frame

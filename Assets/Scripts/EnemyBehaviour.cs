@@ -21,7 +21,7 @@ public class EnemyBehaviour : MonoBehaviour {
 		enemyHealth = maxHealth;
 		healthBar.SetMaxHealth(maxHealth);
 		_maxTurnDamage = GameManager.MaxTurnDamage;
-		//gameObject.SetActive(false);
+		gameObject.SetActive(false);
 		_animator = GetComponent<Animator>();
 		//gameObject.GetComponent<MeshRenderer>().enabled = false;
 	}
@@ -37,16 +37,15 @@ public class EnemyBehaviour : MonoBehaviour {
 		if ( go.CompareTag("Sword") ) {
 			if ( !_isTakingDamage ) {
 				_isTakingDamage = true;
-				_animator.SetTrigger("Damaged");
 				EnemyTakeDamage(10.0f);
-				gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+				//gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
 			}
 		}
 	}
 
 	private void OnTriggerExit(Collider other) {
 		_isTakingDamage = false;
-		gameObject.GetComponent<MeshRenderer>().material.color = Color.black;
+		//gameObject.GetComponent<MeshRenderer>().material.color = Color.black;
 	}
 
 	// Update is called once per frame
@@ -69,11 +68,13 @@ public class EnemyBehaviour : MonoBehaviour {
 
 		//If enemy health has gone to 0 it's player win
 		if ( enemyHealth <= 0.0f ) {
-			Defeated();
+			StartCoroutine(Defeated());
 		}
 		
+		_animator.SetTrigger("Damaged");
+
 		// If the enemy has received enough damage it changes turns
-		if ( damageReceived >= _maxTurnDamage ) {
+		if ( damageReceived >= _maxTurnDamage && enemyHealth > 0.0f) {
 			TurnEnded();
 		}
 	}
@@ -86,10 +87,11 @@ public class EnemyBehaviour : MonoBehaviour {
 		GameManager.Instance.UpdateGameState(GameState.EnemyTurn);
 	}
 
-	private void Defeated() {
+	private IEnumerator Defeated() {
 		_animator.SetTrigger("Dead");
+		yield return new WaitForSeconds(3f);
+		//Destroy(transform.parent.gameObject);
 		GameManager.Instance.UpdateGameState(GameState.Victory);
-		//Destroy(gameObject);
 	}
 
 }
