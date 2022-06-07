@@ -9,6 +9,7 @@ TagManager:
   - Medallion
   - EnemySword
   - Enemy
+  - Core
   layers:
   - Default
   - TransparentFX

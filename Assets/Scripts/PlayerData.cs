@@ -7,7 +7,35 @@ public class PlayerData : MonoBehaviour {
 	private float maxHealth = 100.0f;
 	private float health;
 
+	public GameObject core;
 	public HealthBar healthBar;
+	
+	private void Awake() {
+		core = Instantiate(core, core.transform.position, core.transform.rotation);
+		core.transform.parent = gameObject.transform;
+		GameManager.GameStateChanged += GameManagerOnGameStateChanged;
+	}
+
+	private void OnDestroy() {
+		GameManager.GameStateChanged -= GameManagerOnGameStateChanged;
+	}
+
+	private void GameManagerOnGameStateChanged(GameState state) {
+		switch ( state ) {
+			case GameState.EnemyTurn:
+				Debug.Log("Enemy Turn");
+				core.SetActive(true);
+				break;
+			case GameState.PlayerTurn:
+				Debug.Log("Player Turn");
+				//enemyPrefab.GetComponent<MeshRenderer>().enabled = true;
+				core.SetActive(false);
+				break;
+			default:
+				core.SetActive(false);
+				break;
+		}
+	}
 
 	// Use this for initialization
 	void Start () {

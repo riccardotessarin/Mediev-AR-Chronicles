@@ -36,11 +36,17 @@ public class EnemySwordBehaviour : MonoBehaviour {
 				go.transform.root.GetComponent<PlayerData>().TakeDamage(5f);
 				Destroy(transform.parent.gameObject);
 				break;
+			case "Core":
+				go.transform.root.GetComponent<PlayerData>().TakeDamage(15f);
+				Destroy(transform.parent.gameObject);
+				break;
+			/*
 			case "Medallion":
 				//go.GetComponent<MeshRenderer>().material.color = Color.red;
 				go.transform.root.GetComponent<PlayerData>().TakeDamage(15f);
 				Destroy(transform.parent.gameObject);
 				break;
+			*/
 		}
 	}
 
