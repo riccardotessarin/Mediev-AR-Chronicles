@@ -7,6 +7,8 @@ public class PlayerData : MonoBehaviour {
 	private float maxHealth = 100.0f;
 	private float health;
 
+	public ScreenFlash screenFlash;
+
 	public GameObject core;
 	public HealthBar healthBar;
 	
@@ -44,6 +46,8 @@ public class PlayerData : MonoBehaviour {
 	}
 	
 	public void TakeDamage(float damage) {
+		screenFlash.StartFlash(0.25f, 0.5f, Color.red);
+		
 		health -= damage;
 		healthBar.SetHealth(health);
 		
