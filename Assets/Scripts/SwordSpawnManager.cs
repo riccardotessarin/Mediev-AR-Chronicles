@@ -16,7 +16,7 @@ public class SwordSpawnManager : MonoBehaviour {
 	[SerializeField]
 	private GameObject arrowPrefab;
 
-	public EnemyBehaviour enemyBehaviour;
+	//public EnemyBehaviour enemyBehaviour;
 
 	private readonly int[] _xSpawn = { -1, -1, 0, 1, 1 };
 	private readonly int[] _ySpawn = { 0, -2, -2, -2, 0 };

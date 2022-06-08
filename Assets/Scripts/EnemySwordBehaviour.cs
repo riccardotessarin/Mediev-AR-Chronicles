@@ -30,13 +30,16 @@ public class EnemySwordBehaviour : MonoBehaviour {
 		switch ( go.tag ) {
 			// If it collides with the player shield then no damage
 			case "Shield":
+				GameManager.Instance.ShowTickOnCanvas();
 				Destroy(transform.parent.gameObject);
 				break;
 			case "Sword":
+				GameManager.Instance.ShowTickOnCanvas();
 				go.transform.root.GetComponent<PlayerData>().TakeDamage(5f);
 				Destroy(transform.parent.gameObject);
 				break;
 			case "Core":
+				GameManager.Instance.ShowCrossOnCanvas();
 				go.transform.root.GetComponent<PlayerData>().TakeDamage(15f);
 				Destroy(transform.parent.gameObject);
 				break;

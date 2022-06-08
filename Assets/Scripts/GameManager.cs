@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour {
 
 	public GameState state;
 	bool gameHasEnded = false;
+
+	public Image tick, cross;
 
 	public PauseManager pauseManager;
 	
@@ -21,10 +24,14 @@ public class GameManager : MonoBehaviour {
 
 	public const float MaxTurnDamage = 20.0f;
 
+	public const float PlayerDistance = 0.3f;
+
 	public static event Action<GameState> GameStateChanged; 
 
 	private void Awake() {
 		Instance = this;
+		tick.gameObject.SetActive(false);
+		cross.gameObject.SetActive(false);
 	}
 
 	private void Start() {
@@ -35,6 +42,11 @@ public class GameManager : MonoBehaviour {
 		state = newState;
 
 		switch ( newState ) {
+			case GameState.MainMenu:
+				break;
+			case GameState.Tutorial:
+				HandleTutorial();
+				break;
 			case GameState.PlayerTurn:
 				break;
 			case GameState.EnemyTurn:
@@ -50,6 +62,10 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if ( GameStateChanged != null ) GameStateChanged.Invoke(newState);
+	}
+
+	private void HandleTutorial() {
+		throw new NotImplementedException();
 	}
 
 	private void HandleGameWin() {
@@ -71,9 +87,25 @@ public class GameManager : MonoBehaviour {
 	public void RestartGame() {
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
+
+	public void ShowTickOnCanvas() {
+		StartCoroutine(ShowFeedback(tick, 1.0f));
+	}
+
+	public void ShowCrossOnCanvas() {
+		StartCoroutine(ShowFeedback(cross, 1.0f));
+	}
+	
+	private IEnumerator ShowFeedback(Image image, float timeToShow) {
+		image.gameObject.SetActive(true);
+		yield return new WaitForSeconds(timeToShow);
+		image.gameObject.SetActive(false);
+	}
 }
 
 public enum GameState {
+	MainMenu,
+	Tutorial,
 	PlayerTurn,
 	EnemyTurn,
 	Victory,
