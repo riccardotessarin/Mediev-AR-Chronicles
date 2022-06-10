@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
 	public Image tick, cross;
 
 	public PauseManager pauseManager;
+	public GameObject gameUI;
 	
 	public const float TimeEnemyTurn = 30.0f;
 	public const float TimePlayerTurn = 30.0f;
@@ -30,12 +31,12 @@ public class GameManager : MonoBehaviour {
 
 	private void Awake() {
 		Instance = this;
-		tick.gameObject.SetActive(false);
-		cross.gameObject.SetActive(false);
+		//tick.gameObject.SetActive(false);
+		//cross.gameObject.SetActive(false);
 	}
 
 	private void Start() {
-		UpdateGameState(GameState.EnemyTurn);
+		UpdateGameState(GameState.Tutorial);
 	}
 
 	public void UpdateGameState(GameState newState) {
@@ -45,7 +46,6 @@ public class GameManager : MonoBehaviour {
 			case GameState.MainMenu:
 				break;
 			case GameState.Tutorial:
-				HandleTutorial();
 				break;
 			case GameState.PlayerTurn:
 				break;
@@ -64,10 +64,6 @@ public class GameManager : MonoBehaviour {
 		if ( GameStateChanged != null ) GameStateChanged.Invoke(newState);
 	}
 
-	private void HandleTutorial() {
-		throw new NotImplementedException();
-	}
-
 	private void HandleGameWin() {
 		if ( gameHasEnded == false ) {
 			gameHasEnded = true;
@@ -81,6 +77,11 @@ public class GameManager : MonoBehaviour {
 			gameHasEnded = true;
 			pauseManager.Defeat();
 		}
+	}
+
+	public void EndTutorial() {
+		gameUI.SetActive(true);
+		UpdateGameState(GameState.EnemyTurn);
 	}
 
 	// Restart game if player taps on restart button

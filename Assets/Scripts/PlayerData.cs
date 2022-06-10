@@ -13,7 +13,7 @@ public class PlayerData : MonoBehaviour {
 	public HealthBar healthBar;
 	
 	private void Awake() {
-		core = Instantiate(core, core.transform.position, core.transform.rotation);
+		core = Instantiate(core, new Vector3(0,0,GameManager.PlayerDistance), core.transform.rotation);
 		core.transform.parent = gameObject.transform;
 		GameManager.GameStateChanged += GameManagerOnGameStateChanged;
 	}

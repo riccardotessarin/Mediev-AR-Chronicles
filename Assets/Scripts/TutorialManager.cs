@@ -1,20 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour {
-
-	public GameObject tutorialUI;
 	
+	public GameObject tutorialUI;
+	public GameObject calibrationUI;
+
 	public GameObject distanceWall;
-	private float playerDistance = GameManager.PlayerDistance;
+	//private float playerDistance = GameManager.PlayerDistance;
 	
 	private void Awake() {
 		//Instance = this;
-		GameManager.GameStateChanged += GameManagerOnGameStateChanged;
-		tutorialUI.SetActive(true);
-		distanceWall = Instantiate(distanceWall, new Vector3(0,0, playerDistance), distanceWall.transform.rotation);
 		distanceWall.gameObject.SetActive(false);
+		GameManager.GameStateChanged += GameManagerOnGameStateChanged;
+		//distanceWall = Instantiate(distanceWall, new Vector3(0,0, playerDistance), distanceWall.transform.rotation);
+		//distanceWall.gameObject.SetActive(false);
 	}
 
 	private void OnDestroy() {
@@ -25,14 +27,25 @@ public class TutorialManager : MonoBehaviour {
 		switch ( state ) {
 			case GameState.Tutorial:
 				Debug.Log("Tutorial Phase");
-				distanceWall.gameObject.SetActive(true);
+				tutorialUI.SetActive(true);
+				//distanceWall.gameObject.SetActive(true);
 				break;
 			default:
-				distanceWall.gameObject.SetActive(false);
+				//distanceWall.gameObject.SetActive(false);
 				break;
 		}
 	}
-	
+
+	public void ShowCalibrationUI() {
+		tutorialUI.SetActive(false);
+		calibrationUI.SetActive(true);
+	}
+
+	public void StartCalibration() {
+		calibrationUI.SetActive(false);
+		distanceWall.gameObject.SetActive(true);
+	}
+
 	// Use this for initialization
 	void Start () {
 		

@@ -35,7 +35,6 @@ public class SwordSpawnManager : MonoBehaviour {
 
 	//private GameObject _medallion;
 	//private Vector3 _medallionPosition;
-	private GameObject _core;
 	private Vector3 _corePosition;
 
 
@@ -79,11 +78,13 @@ public class SwordSpawnManager : MonoBehaviour {
 	void Start () {
 		//_medallion = GameObject.FindWithTag("Medallion");
 		//_medallionPosition = _medallion.transform.position;
+		
+		/*
 		foreach ( var arrow in arrowList ) {
 			arrow.gameObject.SetActive(false);
 		}
-		_core = GameObject.FindWithTag("Core");
-		_corePosition = _core.transform.position;
+		*/
+		_corePosition = new Vector3(0,0,GameManager.PlayerDistance);
 		enemyPrefab = Instantiate(enemyPrefab, new Vector3(0, 0, 0.5f), enemyPrefab.transform.rotation);
 	}
 	
