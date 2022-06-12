@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
 
 	public GameState state;
 	bool gameHasEnded = false;
-
+	
 	public Image tick, cross;
 
 	public PauseManager pauseManager;
@@ -30,13 +30,38 @@ public class GameManager : MonoBehaviour {
 	public static event Action<GameState> GameStateChanged; 
 
 	private void Awake() {
-		Instance = this;
+		
+		//Singleton method
+		if ( Instance == null ) {
+			//First run, set the instance
+			Instance = this;
+			Instance.state = GameState.Tutorial;
+			DontDestroyOnLoad(gameObject);
+ 
+		} else if ( Instance != this ) {
+			//Instance is not the same as the one we have, destroy old one, and reset to newest one
+			GameState gs = Instance.state;
+			//Debug.Log(gs);
+			Destroy(Instance.gameObject);
+			Instance = this;
+			Instance.state = gs;
+			DontDestroyOnLoad(gameObject);
+		}
+		
+		/*
+		if ( Instance != null && Instance != this ) {
+			Destroy(this.gameObject);
+		} else {
+			Instance = this;
+			DontDestroyOnLoad(this.gameObject);
+		}
+		*/
 		//tick.gameObject.SetActive(false);
 		//cross.gameObject.SetActive(false);
 	}
 
 	private void Start() {
-		UpdateGameState(GameState.Tutorial);
+		UpdateGameState(Instance.state);
 	}
 
 	public void UpdateGameState(GameState newState) {
@@ -86,6 +111,8 @@ public class GameManager : MonoBehaviour {
 
 	// Restart game if player taps on restart button
 	public void RestartGame() {
+		gameHasEnded = false;
+		UpdateGameState(GameState.Tutorial);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 

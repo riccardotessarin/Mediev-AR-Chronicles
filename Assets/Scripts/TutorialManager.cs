@@ -8,6 +8,8 @@ public class TutorialManager : MonoBehaviour {
 	public GameObject tutorialUI;
 	public GameObject calibrationUI;
 
+	public GameObject skipButton;
+
 	public GameObject distanceWall;
 	//private float playerDistance = GameManager.PlayerDistance;
 	
@@ -28,6 +30,7 @@ public class TutorialManager : MonoBehaviour {
 			case GameState.Tutorial:
 				Debug.Log("Tutorial Phase");
 				tutorialUI.SetActive(true);
+				skipButton.SetActive(true);
 				//distanceWall.gameObject.SetActive(true);
 				break;
 			default:
@@ -44,6 +47,15 @@ public class TutorialManager : MonoBehaviour {
 	public void StartCalibration() {
 		calibrationUI.SetActive(false);
 		distanceWall.gameObject.SetActive(true);
+		skipButton.SetActive(false);
+	}
+
+	public void SkipTutorial() {
+		tutorialUI.SetActive(false);
+		calibrationUI.SetActive(false);
+		distanceWall.gameObject.SetActive(false);
+		skipButton.SetActive(false);
+		GameManager.Instance.EndTutorial();
 	}
 
 	// Use this for initialization
