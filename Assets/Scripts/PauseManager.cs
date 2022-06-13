@@ -39,6 +39,12 @@ public class PauseManager : MonoBehaviour {
 		}
 	}
 
+	public void PauseToMenu() {
+		Time.timeScale = 1f;
+		GameIsPaused = false;
+		AudioListener.pause = false;
+	}
+
 	public void Victory() {
 		gameMenuUI.SetActive(false);
 		winUI.SetActive(true);

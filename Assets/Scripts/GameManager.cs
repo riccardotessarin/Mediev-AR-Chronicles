@@ -17,6 +17,11 @@ public class GameManager : MonoBehaviour {
 
 	public PauseManager pauseManager;
 	public GameObject gameUI;
+
+	public GameObject mainMenuUI;
+	public GameObject settingsUI;
+
+	public int difficulty = 0;
 	
 	public const float TimeEnemyTurn = 30.0f;
 	public const float TimePlayerTurn = 30.0f;
@@ -35,7 +40,7 @@ public class GameManager : MonoBehaviour {
 		if ( Instance == null ) {
 			//First run, set the instance
 			Instance = this;
-			Instance.state = GameState.Tutorial;
+			Instance.state = GameState.MainMenu;
 			DontDestroyOnLoad(gameObject);
  
 		} else if ( Instance != this ) {
@@ -109,11 +114,33 @@ public class GameManager : MonoBehaviour {
 		UpdateGameState(GameState.EnemyTurn);
 	}
 
+	public void StartGame() {
+		UpdateGameState(GameState.Tutorial);
+		SceneManager.LoadScene("GameScene");
+	}
+
+	public void OpenSettings() {
+		mainMenuUI.SetActive(false);
+		settingsUI.SetActive(true);
+	}
+
+	public void ToMainMenu() {
+		if ( PauseManager.GameIsPaused ) {
+			pauseManager.PauseToMenu();
+		}
+		UpdateGameState(GameState.MainMenu);
+		SceneManager.LoadScene("MainMenuScene");
+	}
+
 	// Restart game if player taps on restart button
 	public void RestartGame() {
 		gameHasEnded = false;
 		UpdateGameState(GameState.Tutorial);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+	
+	public void QuitGame() {
+		Application.Quit();
 	}
 
 	public void ShowTickOnCanvas() {
@@ -128,6 +155,21 @@ public class GameManager : MonoBehaviour {
 		image.gameObject.SetActive(true);
 		yield return new WaitForSeconds(timeToShow);
 		image.gameObject.SetActive(false);
+	}
+
+	public void ChangeDifficulty(int val) {
+		if ( difficulty != val ) {
+			difficulty = val;
+			switch ( difficulty ) {
+				case 0:
+					break;
+				case 1:
+					break;
+				case 2:
+					break;
+			}
+
+		}
 	}
 }
 
