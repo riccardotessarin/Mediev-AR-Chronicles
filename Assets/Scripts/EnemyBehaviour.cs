@@ -20,7 +20,7 @@ public class EnemyBehaviour : MonoBehaviour {
 	private void Awake() {
 		enemyHealth = maxHealth;
 		healthBar.SetMaxHealth(maxHealth);
-		_maxTurnDamage = GameManager.MaxTurnDamage;
+		_maxTurnDamage = GameManager.Instance.gameDifficulty.MaxTurnDamage;
 		gameObject.SetActive(false);
 		_animator = GetComponent<Animator>();
 		//gameObject.GetComponent<MeshRenderer>().enabled = false;

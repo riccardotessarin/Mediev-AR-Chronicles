@@ -52,9 +52,9 @@ public class SwordSpawnManager : MonoBehaviour {
 			case GameState.EnemyTurn:
 				Debug.Log("Enemy Turn");
 				_turnTimer = 0.0f;
-				_turnTime = GameManager.TimeEnemyTurn;
-				_timeBetweenSpawns = GameManager.TimeBetweenSpawns;
-				_spawnDelay = GameManager.TimeBeforeSpawn;
+				_turnTime = GameManager.Instance.gameDifficulty.TimeEnemyTurn;
+				_timeBetweenSpawns = GameManager.Instance.gameDifficulty.TimeBetweenSpawns;
+				_spawnDelay = GameManager.Instance.gameDifficulty.TimeBeforeSpawn;
 				_isEnemyTurn = true;
 				_isPlayerTurn = false;
 				break;
@@ -63,7 +63,7 @@ public class SwordSpawnManager : MonoBehaviour {
 				//enemyPrefab.GetComponent<MeshRenderer>().enabled = true;
 				enemyPrefab.SetActive(true);
 				_turnTimer = 0.0f;
-				_turnTime = GameManager.TimePlayerTurn;
+				_turnTime = GameManager.Instance.gameDifficulty.TimePlayerTurn;
 				_isEnemyTurn = false;
 				_isPlayerTurn = true;
 				break;
@@ -85,7 +85,7 @@ public class SwordSpawnManager : MonoBehaviour {
 		}
 		*/
 		_corePosition = new Vector3(0,0,GameManager.PlayerDistance);
-		enemyPrefab = Instantiate(enemyPrefab, new Vector3(0, 0, 0.5f), enemyPrefab.transform.rotation);
+		enemyPrefab = Instantiate(enemyPrefab, new Vector3(0, 0, 0.1f), enemyPrefab.transform.rotation);
 	}
 	
 	// Update is called once per frame

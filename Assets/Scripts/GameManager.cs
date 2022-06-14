@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -20,36 +21,37 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject mainMenuUI;
 	public GameObject settingsUI;
-
-	public int difficulty = 0;
+	public TMP_Dropdown difficultyDropdown;
 	
-	public const float TimeEnemyTurn = 30.0f;
-	public const float TimePlayerTurn = 30.0f;
-	public const float TimeBeforeSpawn = 2.0f;
-	public const float TimeBetweenSpawns = 5.0f;
-
-	public const float MaxTurnDamage = 20.0f;
+	public GameDifficulty gameDifficulty = new GameDifficulty();
 
 	public const float PlayerDistance = 0.3f;
 
 	public static event Action<GameState> GameStateChanged; 
 
 	private void Awake() {
-		
 		//Singleton method
 		if ( Instance == null ) {
 			//First run, set the instance
 			Instance = this;
 			Instance.state = GameState.MainMenu;
+			gameDifficulty.SetOnEasy();
+			Debug.Log(gameDifficulty.difficulty);
+			//gameDifficulty.SetOnHard();
+			//Debug.Log(gameDifficulty.difficulty);
+			
 			DontDestroyOnLoad(gameObject);
  
 		} else if ( Instance != this ) {
 			//Instance is not the same as the one we have, destroy old one, and reset to newest one
 			GameState gs = Instance.state;
+			GameDifficulty gd = Instance.gameDifficulty;
 			//Debug.Log(gs);
 			Destroy(Instance.gameObject);
 			Instance = this;
 			Instance.state = gs;
+			Instance.gameDifficulty = gd;
+			Debug.Log(gameDifficulty.difficulty);
 			DontDestroyOnLoad(gameObject);
 		}
 		
@@ -66,6 +68,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void Start() {
+		if ( Instance.state == GameState.MainMenu ) {
+			difficultyDropdown.value = gameDifficulty.difficulty;
+			difficultyDropdown.RefreshShownValue();
+		}
 		UpdateGameState(Instance.state);
 	}
 
@@ -128,6 +134,7 @@ public class GameManager : MonoBehaviour {
 		if ( PauseManager.GameIsPaused ) {
 			pauseManager.PauseToMenu();
 		}
+		gameHasEnded = false;
 		UpdateGameState(GameState.MainMenu);
 		SceneManager.LoadScene("MainMenuScene");
 	}
@@ -158,14 +165,19 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void ChangeDifficulty(int val) {
-		if ( difficulty != val ) {
-			difficulty = val;
-			switch ( difficulty ) {
+		if ( gameDifficulty.difficulty != val ) {
+			switch ( val ) {
 				case 0:
+					gameDifficulty.SetOnEasy();
+					Debug.Log("Set on Easy");
 					break;
 				case 1:
+					gameDifficulty.SetOnNormal();
+					Debug.Log("Set on Normal");
 					break;
 				case 2:
+					gameDifficulty.SetOnHard();
+					Debug.Log("Set on Hard");
 					break;
 			}
 

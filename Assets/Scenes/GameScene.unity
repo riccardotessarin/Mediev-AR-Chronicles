@@ -10964,7 +10964,7 @@ MonoBehaviour:
   gameUI: {fileID: 2042915090}
   mainMenuUI: {fileID: 0}
   settingsUI: {fileID: 0}
-  difficulty: 0
+  difficultyDropdown: {fileID: 0}
 --- !u!4 &1628705661
 Transform:
   m_ObjectHideFlags: 0
