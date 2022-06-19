@@ -22,7 +22,10 @@ public class SwordSpawnManager : MonoBehaviour {
 	private readonly int[] _ySpawn = { 0, -2, -2, -2, 0 };
 
 	public Image[] arrowList;
-	
+
+	public ParticleSystem circleEffect;
+	public ParticleSystem verticalEffect;
+
 	private float _timer = 0.0f;
 	private float _turnTimer = 0.0f;
 
@@ -61,7 +64,9 @@ public class SwordSpawnManager : MonoBehaviour {
 			case GameState.PlayerTurn:
 				Debug.Log("Player Turn");
 				//enemyPrefab.GetComponent<MeshRenderer>().enabled = true;
-				enemyPrefab.SetActive(true);
+				StartCoroutine(SpawnEnemy());
+				//enemyPrefab.SetActive(true);
+				//enemyPrefab.GetComponent<EnemyBehaviour>().StartFadeIn();
 				_turnTimer = 0.0f;
 				_turnTime = GameManager.Instance.gameDifficulty.TimePlayerTurn;
 				_isEnemyTurn = false;
@@ -153,5 +158,14 @@ public class SwordSpawnManager : MonoBehaviour {
 			yield return new WaitForSeconds(0.2f);
 			i++;
 		}
+	}
+
+	private IEnumerator SpawnEnemy() {
+		verticalEffect.Play();
+		circleEffect.Play();
+		yield return new WaitForSeconds(0.5f);
+		enemyPrefab.SetActive(true);
+		enemyPrefab.GetComponent<CapsuleCollider>().enabled = true;
+
 	}
 }

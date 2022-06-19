@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour {
 			case GameState.EnemyTurn:
 				break;
 			case GameState.Victory:
-				HandleGameWin();
+				StartCoroutine(HandleGameWin());
 				break;
 			case GameState.Lose:
 				HandleGameLose();
@@ -100,9 +100,10 @@ public class GameManager : MonoBehaviour {
 		if ( GameStateChanged != null ) GameStateChanged.Invoke(newState);
 	}
 
-	private void HandleGameWin() {
+	private IEnumerator HandleGameWin() {
 		if ( gameHasEnded == false ) {
 			gameHasEnded = true;
+			yield return new WaitForSeconds(5f);
 			pauseManager.Victory();
 		}
 	}
