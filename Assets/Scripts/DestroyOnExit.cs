@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+ *	This handles the destruction of the enemy prefab after the death animation
+ *	has stopped playing
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

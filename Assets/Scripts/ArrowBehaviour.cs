@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ *	This class manages the 3D arrow prefab creation and destruction
+ *
+ *	KEEPING THIS FOR REFERENCE BUT REPLACED WITH 2D CANVAS ARROW
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

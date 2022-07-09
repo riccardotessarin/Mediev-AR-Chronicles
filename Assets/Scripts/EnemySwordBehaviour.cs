@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ *	Sets the enemy sword throw speed and checks for collisions 
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ *	Class that handles the semi-transparent wall during the calibration phase
+ *	and the associated countdown timer
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;

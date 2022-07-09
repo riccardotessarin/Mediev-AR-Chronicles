@@ -1,3 +1,9 @@
+/*
+ *	Utility class for game difficulty settings
+ *	Here are stored all the values related to turns times and maximum damage,
+ *	the functions are triggered when changing difficulty level in the game settings
+ */
+
 public class GameDifficulty {
 	public int difficulty = 0;
 	

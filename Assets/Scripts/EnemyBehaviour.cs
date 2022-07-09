@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ *	Attached to the enemy prefab
+ *	This handles the damage received from the enemy as well as triggering
+ *	the associated end of turn state and victory state
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

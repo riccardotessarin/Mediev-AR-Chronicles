@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ *	Script that makes the screen flash red when the player takes damage
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

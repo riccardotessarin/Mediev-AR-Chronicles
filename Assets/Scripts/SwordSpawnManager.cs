@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ *	This is the manager that handles the turn times, and enemy and enemy attacks spawn
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
