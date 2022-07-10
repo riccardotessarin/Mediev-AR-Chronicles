@@ -60,6 +60,7 @@ public class SwordSpawnManager : MonoBehaviour {
 				Debug.Log("Enemy Turn");
 				_turnTimer = 0.0f;
 				_turnTime = GameManager.Instance.gameDifficulty.TimeEnemyTurn;
+				Debug.Log( "Enemy turn time: " + _turnTime);
 				_timeBetweenSpawns = GameManager.Instance.gameDifficulty.TimeBetweenSpawns;
 				_spawnDelay = GameManager.Instance.gameDifficulty.TimeBeforeSpawn;
 				_isEnemyTurn = true;
@@ -73,6 +74,7 @@ public class SwordSpawnManager : MonoBehaviour {
 				//enemyPrefab.GetComponent<EnemyBehaviour>().StartFadeIn();
 				_turnTimer = 0.0f;
 				_turnTime = GameManager.Instance.gameDifficulty.TimePlayerTurn;
+				Debug.Log( "Player turn time: " + _turnTime);
 				_isEnemyTurn = false;
 				_isPlayerTurn = true;
 				break;
@@ -120,7 +122,7 @@ public class SwordSpawnManager : MonoBehaviour {
 			_turnTimer += Time.deltaTime;
 
 			if ( _turnTimer >= _turnTime ) {
-				enemyPrefab.GetComponent<EnemyBehaviour>().TurnEnded();
+				enemyPrefab.GetComponent<EnemyBehaviour>().PlayerTurnEOT();
 				_turnTimer = 0.0f;
 			}
 		}

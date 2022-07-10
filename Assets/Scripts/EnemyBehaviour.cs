@@ -94,6 +94,10 @@ public class EnemyBehaviour : MonoBehaviour {
 			StartCoroutine(TurnEnded());
 		}
 	}
+
+	public void PlayerTurnEOT() {
+		StartCoroutine(TurnEnded());
+	}
 	
 	// To make it better looking
 	public IEnumerator TurnEnded() {
