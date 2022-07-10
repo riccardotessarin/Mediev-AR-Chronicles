@@ -147,8 +147,10 @@ public class SwordSpawnManager : MonoBehaviour {
 		Vector3 position = new Vector3(_xSpawn[i], _ySpawn[i], _corePosition.z);
 		StartCoroutine(Blink(arrowList[i], timeBeforeSpawn));
 		yield return new WaitForSeconds(timeBeforeSpawn);
-		Instantiate(enemySword, position, Quaternion.LookRotation(_corePosition - position));
-
+		GameObject attack = Instantiate(enemySword, position, Quaternion.LookRotation(_corePosition - position));
+		if ( i == 2 ) {
+			attack.transform.Rotate(0f,0f,90f, Space.Self);
+		}
 
 	}
 	
