@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour {
 	public GameObject settingsUI;
 	public TMP_Dropdown difficultyDropdown;
 	
+	public GameObject quitMenuUI;
+	private bool quitMenuOpen = false;
+	
 	public GameDifficulty gameDifficulty = new GameDifficulty();
 
 	public const float PlayerDistance = 0.3f;
@@ -73,6 +76,16 @@ public class GameManager : MonoBehaviour {
 			difficultyDropdown.RefreshShownValue();
 		}
 		UpdateGameState(Instance.state);
+	}
+
+	private void Update() {
+		if ( Input.GetKeyUp(KeyCode.Escape) ) {
+			if ( quitMenuOpen ) {
+				CloseQuitMenu();
+			} else {
+				OpenQuitMenu();
+			}
+		}
 	}
 
 	public void UpdateGameState(GameState newState) {
@@ -145,6 +158,16 @@ public class GameManager : MonoBehaviour {
 		gameHasEnded = false;
 		UpdateGameState(GameState.Tutorial);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+	
+	public void OpenQuitMenu() {
+		quitMenuOpen = true;
+		quitMenuUI.SetActive(true);
+	}
+	
+	public void CloseQuitMenu() {
+		quitMenuOpen = false;
+		quitMenuUI.SetActive(false);
 	}
 	
 	public void QuitGame() {

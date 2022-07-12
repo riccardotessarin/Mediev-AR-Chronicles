@@ -55,7 +55,9 @@ public class PauseManager : MonoBehaviour {
 		loseUI.SetActive(true);
 	}
 
+/*
 	public void QuitGame() {
 		Application.Quit();
 	}
+ */
 }
